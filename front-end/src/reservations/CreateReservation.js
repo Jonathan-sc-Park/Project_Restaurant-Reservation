@@ -22,30 +22,31 @@ function CreateReservation() {
   // Handlers //
   const handleChange = ({ target }) => {
     setReservation({ ...reservation, [target.name]: target.value });
-  }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const abortController = new AbortController();
     createReservation(reservation, abortController.signal)
-    // Need to slice returned date/time to only display date, because API returns full date/time string
-      .then((newReservation) => history.push(`/dashboard?date=${newReservation.reservation_date.slice(0, 10)}`))
+      // Need to slice returned date/time to only display date, because API returns full date/time string
+      .then((newReservation) =>
+        history.push(
+          `/dashboard?date=${newReservation.reservation_date.slice(0, 10)}`
+        )
+      )
       .catch((error) => setError(error));
-    
+
     return () => abortController.abort();
   };
-
-
-
 
   return (
     <main>
       <div className="d-md-flex flex-column mb-3">
         <h1>Create a New Reservation</h1>
-        <ErrorAlert error={error} setError={setError}/>
+        <ErrorAlert error={error} setError={setError} />
       </div>
-      
+
       <ReservationForm
         reservation={reservation}
         handleSubmit={handleSubmit}
@@ -54,6 +55,5 @@ function CreateReservation() {
     </main>
   );
 }
-
 
 export default CreateReservation;
