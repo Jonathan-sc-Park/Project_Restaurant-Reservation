@@ -124,7 +124,7 @@ function isNotPastDate(req, res, next) {
   const reservationDate = new Date(year, month, day, hour, minute, 59, 59).getTime();
   const today = new Date().getTime();
 
-  if (reservationDate > today) {
+  if (reservationDate >= today) {
     next();
   } else {
     next({
