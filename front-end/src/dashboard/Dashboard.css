@@ -1,0 +1,35 @@
+.dashboard_title {
+  text-align: right;
+}
+
+.list-title{
+  color: white;
+}
+
+/* Reservation Cards */
+
+.reservations-list {
+  background-color: green;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.reservations-list .card {
+  max-width: 20rem;
+}
+
+/* Button Toolbar Nav */
+.btn-toolbar {
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Table Cards */
+
+.tables-list {
+  background-color: blue;
+  border-radius: 10px;
+  margin-top: 40px;
+  padding: 20px;
+}
