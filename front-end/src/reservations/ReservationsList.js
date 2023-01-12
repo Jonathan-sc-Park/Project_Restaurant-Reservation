@@ -6,6 +6,7 @@ function ReservationsList({ reservations, setReservationsError, loadReservations
   return (
     <div id="reservationGrid" className="row row-cols-1">
       {reservations.map((reservation) => (
+        reservation.status === "cancelled" ? null : (
         <div className="reservation-card col-sm" key={reservation.reservation_id}>
           <ReservationCard
             reservation_id={reservation.reservation_id}
@@ -19,7 +20,7 @@ function ReservationsList({ reservations, setReservationsError, loadReservations
             setReservationsError={setReservationsError}
             loadReservationsAndTables={loadReservationsAndTables}
           />
-        </div>
+        </div> )
       ))}
     </div>
   );

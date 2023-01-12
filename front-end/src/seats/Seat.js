@@ -72,7 +72,7 @@ function Seat() {
           <option value="">- Please choose a table -</option>
           {tables.map((table) => (
             <option value={table.table_id} key={table.table_name}>
-              {table.table_name} - {table.capacity}
+              {table.table_name} - {table.capacity} capacity
             </option>
           ))}
           </select>
