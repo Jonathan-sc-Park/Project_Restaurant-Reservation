@@ -5,13 +5,16 @@ function CancelReservationButton({ reservation_id, setReservationsError, loadRes
 
   const handleOk = (event) => {
     event.preventDefault();
-    const message = "Do you want to cancel this reservation? This cannot be undone.";
+    const abortController = new AbortController();
+    const message = "Do you want to cancel this reservation?";
     if (window.confirm(message)) {
-      cancelReservation(reservation_id, "cancelled")
+      cancelReservation(reservation_id, "cancelled", abortController.signal)
         .then(() => loadReservationsAndTables())
         .catch(setReservationsError);
     }
+    return () => abortController.abort();
   };
+
 
 
   return (

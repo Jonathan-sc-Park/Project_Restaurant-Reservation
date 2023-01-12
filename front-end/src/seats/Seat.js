@@ -42,11 +42,12 @@ function Seat() {
   // Submit and send PUT request in order to seat reservation and update table //
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateTable(reservation_id, selectedTable.table_id, selectedTable)
+    const abortController = new AbortController();
+    updateTable(reservation_id, selectedTable.table_id, selectedTable, abortController.signal)
       .then(() => history.push("/dashboard"))
       .catch((error) => setError(error));
+      return () => abortController.abort();
   }
-
 
   return (
     <main>

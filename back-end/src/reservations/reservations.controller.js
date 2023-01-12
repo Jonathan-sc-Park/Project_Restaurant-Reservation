@@ -123,6 +123,7 @@ function isNotPastDate(req, res, next) {
   month -= 1;
   const reservationDate = new Date(year, month, day, hour, minute, 59, 59).getTime();
   const today = new Date().getTime();
+  console.log("this is the reservationDate: ", reservationDate)
 
   if (reservationDate >= today) {
     next();

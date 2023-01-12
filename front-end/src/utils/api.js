@@ -142,6 +142,7 @@ export async function cancelReservation(reservation_id, status, signal) {
     method: "PUT",
     headers,
     body: JSON.stringify({data: { status: status } }),
+    signal
   };
   return await fetchJson(url, options, { status })
 }
@@ -193,6 +194,7 @@ export async function updateTable(reservation_id, table_id, updatedTable, signal
     method: "PUT",
     headers,
     body: JSON.stringify({ data: { reservation_id: reservation_id } }),
+    signal,
   };
   return await fetchJson(url, options, updatedTable);
 }
